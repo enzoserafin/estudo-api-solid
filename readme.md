@@ -30,3 +30,22 @@ GymPss style app.
 - [ ] O dados da aplicação precisam estar persistidos em um banco PostgreSQL;
 - [ ] Todas listas de dados precisam estar paginadas com 20 itens por página;
 - [ ] O usuário deve ser identificado por um JWT (JSON Web Token)
+
+# Notes
+
+## Bibliotecas de desenvolviemnto
+
+ - typescript (Para o projeto conter typescript)
+ - @types/node (Tipagens do node para typescript)
+ - tsx (Para executar o typescript no node)
+ - tsup (Para fazer o build para JS da nossa aplicação)
+
+ ## Comandos
+
+ ```
+ $ npm i typescript @types/node tsx tsup -D
+ ```
+
+ ```
+$ npx tsc --init
+ ```
