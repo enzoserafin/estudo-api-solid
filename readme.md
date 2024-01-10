@@ -35,17 +35,28 @@ GymPss style app.
 
 ## Bibliotecas de desenvolviemnto
 
- - typescript (Para o projeto conter typescript)
- - @types/node (Tipagens do node para typescript)
- - tsx (Para executar o typescript no node)
- - tsup (Para fazer o build para JS da nossa aplicação)
+- typescript (Para o projeto conter typescript)
+- @types/node (Tipagens do node para typescript)
+- tsx (Para executar o typescript no node)
+- tsup (Para fazer o build para JS da nossa aplicação)
 
- ## Comandos
+## Comandos
 
- ```
- $ npm i typescript @types/node tsx tsup -D
- ```
+```
+$ npm i typescript @types/node tsx tsup -D
+```
 
- ```
+```
 $ npx tsc --init
- ```
+```
+
+```
+$ npx prisma generate
+$ npx prisma migrate dev
+$ npx prisma migrate deploy
+$ npx prisma studio
+```
+
+```sh
+$ docker run --name api-solid-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest
+```
