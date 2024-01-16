@@ -1,16 +1,21 @@
 import { compare } from 'bcryptjs'
-import { expect, describe, test } from 'vitest'
+import { expect, describe, test, beforeEach } from 'vitest'
 
 import { RegisterUseCase } from './register'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { UserAlreadyExistsError } from './erros/user-already-exists-error'
 
-describe('Register Use Case', () => {
-  test('should be able to register', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersRepository)
+let usersRepository: InMemoryUsersRepository
+let sut: RegisterUseCase
 
-    const { user } = await registerUseCase.call({
+describe('Register Use Case', () => {
+  beforeEach(() => {
+    usersRepository = new InMemoryUsersRepository()
+    sut = new RegisterUseCase(usersRepository)
+  })
+
+  test('should be able to register', async () => {
+    const { user } = await sut.call({
       name: 'Fake name',
       email: 'fakeemail@email.com',
       password: '123456',
@@ -20,10 +25,7 @@ describe('Register Use Case', () => {
   })
 
   test('should hash user password upon registration', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersRepository)
-
-    const { user } = await registerUseCase.call({
+    const { user } = await sut.call({
       name: 'Fake name',
       email: 'fakeemail@email.com',
       password: '123456',
@@ -38,19 +40,16 @@ describe('Register Use Case', () => {
   })
 
   test('should not be able to register with same email twice', async () => {
-    const usersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(usersRepository)
-
     const email = 'fakeemail@email.com'
 
-    await registerUseCase.call({
+    await sut.call({
       name: 'Fake name',
       email,
       password: '123456',
     })
 
     await expect(() =>
-      registerUseCase.call({
+      sut.call({
         name: 'Fake name',
         email,
         password: '123456',
