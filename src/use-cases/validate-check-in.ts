@@ -29,10 +29,6 @@ export class ValidateCheckInUseCase {
       'minutes',
     )
 
-    console.log(
-      `distanceInMinutesFromCheckInCreation: ${distanceInMinutesFromCheckInCreation}`,
-    )
-
     if (distanceInMinutesFromCheckInCreation > 20) {
       throw new LateCheckInValidationError()
     }
