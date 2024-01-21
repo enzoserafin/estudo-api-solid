@@ -22,7 +22,7 @@ describe('Profile controller', () => {
 
     expect(profileResponse.statusCode).toEqual(200)
     expect(profileResponse.body.user).toEqual(
-      expect.objectContaining({ email: 'fake@email.com' }),
+      expect.objectContaining({ email: 'user@email.com' }),
     )
   })
 })
