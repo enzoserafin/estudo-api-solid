@@ -60,3 +60,13 @@ $ npx prisma studio
 ```sh
 $ docker run --name api-solid-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql:latest
 ```
+
+## Deploy
+
+# Continuous Integration = CI
+
+Processo de receber código no repositorio
+
+# Continuous Deployment/Delivery = CD
+
+Fazer deploy da aplicação quando atualizarmos o repositorio
